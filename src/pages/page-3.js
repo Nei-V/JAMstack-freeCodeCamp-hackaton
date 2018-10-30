@@ -17,7 +17,7 @@ const ThirdPage = () => (
     <h1>Testing the database</h1>
     <br />
    
-    {/* <ShowPosts /> */}
+    <ShowPosts />
     <br />
     <a href="https://www.linkedin.com/in/ionvarsescu/" target="blank">Ion Varsescu on Linkedin</a> 
     <br />

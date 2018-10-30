@@ -1,32 +1,8 @@
-/* import React, { Component } from 'react';
+import React, { Component } from 'react';
 import faunadb, { query as q } from "faunadb";
 
-var client = new faunadb.Client({ secret: "fnAC-mwOfqACCObc9S07Vm_dIMslXCgmJ03xhYhp" });
-client.query(q.CreateDatabase({ name: "my_second_app" })).then((ret) => console.log(ret));
-client.query(q.CreateKey({ database: q.Database("my_second_app"), role: "server" })).then((ret) => console.log(ret));
-client.query(q.CreateClass({ name: "posts_in_second_app" })).then((ret) => console.log(ret));
 
-client.query(
-    q.CreateIndex(
-        {
-            name: "posts_by_title",
-            source: q.Class("posts_in_second_app"),
-            terms: [{ field: ["data", "title"] }]
-        }))
-    .then((ret) => console.log(ret));
-
-client.query(
-    q.CreateIndex(
-        {
-            name: "posts_by_tags_with_title",
-            source: q.Class("posts_in_second_app"),
-            terms: [{ field: ["data", "tags"] }],
-            values: [{ field: ["data", "title"] }]
-        }))
-    .then((ret) => console.log(ret))
-
-console.log("client", client);
-
+var client={};
 
 
 class ShowPosts extends React.Component {
@@ -36,10 +12,17 @@ class ShowPosts extends React.Component {
         this.insertManyPosts = this.insertManyPosts.bind(this);
         this.showPostByRef = this.showPostByRef.bind(this);
         this.showPostByTitle = this.showPostByTitle.bind(this);
+        this.showAllPosts=this.showAllPosts.bind(this);
 
     }
 
+    
 
+    componentDidMount() {
+        client = new faunadb.Client({ secret: "fnAC-mwOfqACCObc9S07Vm_dIMslXCgmJ03xhYhp" });
+    }
+
+    
     insertOnePost(e) {
         e.preventDefault();
         console.log('submit new post func');
@@ -67,7 +50,7 @@ class ShowPosts extends React.Component {
         e.preventDefault();
         console.log("show post by ref func");
         client.query(q.Get(q.Ref(q.Class("posts_in_second_app"), "214608349797286405"))).then((ret) => document.getElementById("showByRef").innerHTML = ret.data.title);
-      
+
     }
 
     showPostByTitle(e) {
@@ -78,6 +61,17 @@ class ShowPosts extends React.Component {
                 q.Match(q.Index("posts_by_title"), "My cat and other marvels")))
             .then((ret) => document.getElementById("showByTitle").innerHTML = ret.data.title);
     }
+
+    showAllPosts(e) {
+        e.preventDefault();
+        console.log("show all posts func");
+        client.query(
+            q.Get(
+                q.Match(q.Index("posts_by_title"), "My cat and other marvels")))
+            .then((ret) => console.log(ret.data.title));
+    }
+   
+
 
 
 
@@ -93,9 +87,12 @@ class ShowPosts extends React.Component {
             <button onClick={this.showPostByRef}>Show post by ref</button>,
             <p id="showByRef"></p>,
             <button onClick={this.showPostByTitle}>Show post by title</button>,
-            <p id="showByTitle"></p>
+            <p id="showByTitle"></p>,
+            <br />,
+            <button onClick={this.showAllPosts}>Show all posts in console by title</button>,
+            <p id="ShowAllPosts"></p>
         ];
     }
 }
 
-export default ShowPosts; */
+export default ShowPosts;
