@@ -19,11 +19,12 @@ class ShowPosts extends React.Component {
     
 
     componentDidMount() {
-        client = new faunadb.Client({ secret: "fnAC-mwOfqACCObc9S07Vm_dIMslXCgmJ03xhYhp" });
+        
     }
 
     
     insertOnePost(e) {
+        client = new faunadb.Client({ secret: "fnAC-mwOfqACCObc9S07Vm_dIMslXCgmJ03xhYhp" });
         e.preventDefault();
         console.log('submit new post func');
         client.query(
