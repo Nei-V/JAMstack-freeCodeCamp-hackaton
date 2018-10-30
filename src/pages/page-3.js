@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import ShowPosts from '../components/ShowPosts';
 
-import faunadb, { query as q } from "faunadb";
+//import faunadb, { query as q } from "faunadb";
 
 
 
@@ -17,7 +17,7 @@ const ThirdPage = () => (
     <h1>Testing the database</h1>
     <br />
    
-    <ShowPosts />
+    {/* <ShowPosts /> */}
     <br />
     <a href="https://www.linkedin.com/in/ionvarsescu/" target="blank">Ion Varsescu on Linkedin</a> 
     <br />

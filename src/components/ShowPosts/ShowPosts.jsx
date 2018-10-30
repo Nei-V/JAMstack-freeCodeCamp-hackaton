@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/* import React, { Component } from 'react';
 import faunadb, { query as q } from "faunadb";
 
 var client = new faunadb.Client({ secret: "fnAC-mwOfqACCObc9S07Vm_dIMslXCgmJ03xhYhp" });
@@ -98,4 +98,4 @@ class ShowPosts extends React.Component {
     }
 }
 
-export default ShowPosts;
+export default ShowPosts; */
