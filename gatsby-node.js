@@ -10,10 +10,10 @@ var webpack = require('webpack');
 
 exports.onCreateWebpackConfig = ({ actions, plugins }) => {
     actions.setWebpackConfig({
-     
+
         plugins: [
             new webpack.DefinePlugin({ "global.GENTLY": false })
-       ],
-      
+        ],
+
     })
-  }
+}
