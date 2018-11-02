@@ -94,11 +94,11 @@ class ShowPosts extends React.Component {
         client = new faunadb.Client({ secret: "fnAC-mwOfqACCObc9S07Vm_dIMslXCgmJ03xhYhp" });
         e.preventDefault();
         console.log("delete all posts func");
-        let all = client.query(q.Paginate(q.Match(q.Index("all_posts_in_second_app"))));
+        let all = client.query(q.Paginate(q.Match(q.Index("instance number 112  random"))));
         let c=[];
         let deletePost = function (id){
             client = new faunadb.Client({ secret: "fnAC-mwOfqACCObc9S07Vm_dIMslXCgmJ03xhYhp" });
-            client.query(q.Delete(q.Ref(q.Class("posts_in_second_app"), id)));
+            client.query(q.Delete(q.Ref(q.Class("testclass"), id)));
         };
         all.then((ret)=> c=ret.data.forEach(function(index){
             c.push(index.value.id);
@@ -115,7 +115,7 @@ class ShowPosts extends React.Component {
         client = new faunadb.Client({ secret: "fnAC-mwOfqACCObc9S07Vm_dIMslXCgmJ03xhYhp" });
         e.preventDefault();
         console.log("delete one posts func by");
-        client.query(q.Delete(q.Ref(q.Class("posts_in_second_app"), "214605133261046280"))).then((ret) => console.log(ret))
+        client.query(q.Delete(q.Ref(q.Class("testclass"), "214841931368235525"))).then((ret) => console.log(ret))
             .catch((ret) => console.log(ret))
     }
 
