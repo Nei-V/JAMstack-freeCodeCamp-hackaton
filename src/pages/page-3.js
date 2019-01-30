@@ -25,7 +25,7 @@ const ThirdPage = () => (
     <br />
     <a href="https://www.facebook.com/groups/free.code.camp.haifa/" target="blank">FreeCodeCamp Haifa Google Group</a> 
     <br />
-    <a href="http://ionv.co.nf/" target="blank">Ion Varsescu's Personal Blog</a> 
+    <a href="https://www.ionvarsescu.tk" target="blank">Ion Varsescu's Personal Blog</a> 
     <br />
     <br />
     <Link to="/">Go back to the homepage</Link>
